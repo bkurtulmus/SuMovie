@@ -5,6 +5,7 @@ class FeedPost {
   String photo;
   String date;
   int likes;
+  int dislikes;
   int comments;
 
   FeedPost({
@@ -14,6 +15,7 @@ class FeedPost {
     required this.photo,
     required this.date,
     required this.likes,
+    required this.dislikes,
     required this.comments,
   });
 }

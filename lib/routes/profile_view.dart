@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/model/post.dart';
+import 'package:user_database/routes/edit_profile_view.dart';
+import 'package:user_database/routes/feed_view.dart';
 import 'package:user_database/ui components/post_card.dart';
 
 class ProfileView extends StatefulWidget {
@@ -11,10 +13,10 @@ class ProfileView extends StatefulWidget {
 
 class _ProfileViewState extends State<ProfileView> {
   List<Post> posts = [
-    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41, comments: 6),
-    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 4', likes: 88, comments: 14),
-    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 29', likes: 12, comments: 1),
-    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'March 26', likes: 73, comments: 10),
+    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41,dislikes: 4, comments: 6),
+    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 4', likes: 88, dislikes: 5, comments: 14),
+    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 29', likes: 12,dislikes: 1, comments: 1),
+    Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 2', likes: 13, dislikes: 2, comments: 10),
   ];
   int index = 0;
   final screens = [
@@ -36,6 +38,11 @@ class _ProfileViewState extends State<ProfileView> {
       post.likes++;
     });
   }
+  void increamentDisLike(Post post){
+    setState(() {
+      post.dislikes++;
+    });
+  }
   void buttonClicked() {
     setState(() {
       postCount++;
@@ -44,7 +51,8 @@ class _ProfileViewState extends State<ProfileView> {
   void ClickedButton(String value) {
     switch (value) {
       case 'Edit Profile':
-        break;
+        throw Navigator.push(context, MaterialPageRoute(builder: (context) => EditProfileView()
+        ));
       case 'Settings':
         break;
     }
@@ -62,7 +70,9 @@ class _ProfileViewState extends State<ProfileView> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+          },
         ),
         actions: <Widget>[
           PopupMenuButton<String>(
@@ -77,11 +87,6 @@ class _ProfileViewState extends State<ProfileView> {
             },
           ),
         ],
-      ),
-
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: buttonClicked,
       ),
 
       body: SingleChildScrollView(
@@ -205,41 +210,6 @@ class _ProfileViewState extends State<ProfileView> {
               ],
             ),
           ),
-        ),
-      ),
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          ),
-        ),
-        child: NavigationBar(
-          height: 60,
-          selectedIndex: index,
-          onDestinationSelected: (index) =>
-              setState(() => this.index = index),
-          destinations: [
-            NavigationDestination(
-              icon:Icon(Icons.email_outlined),
-              selectedIcon: Icon(Icons.email),
-              label: 'Mail',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.chat_bubble_outlined),
-              selectedIcon: Icon(Icons.chat_bubble_outlined),
-              label: 'Chat',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.group_outlined),
-              selectedIcon: Icon(Icons.group_outlined),
-              label: 'Spaces',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.videocam_outlined, size: 30),
-              selectedIcon: Icon(Icons.videocam_outlined),
-              label: 'Meet',
-            ),
-          ],
         ),
       ),
     );

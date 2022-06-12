@@ -63,7 +63,7 @@ class _Login extends State<Login> {
             ElevatedButton(onPressed: () async{
               await AppAnalytics.setScreenName('Feed');
               auth.signInWithEmailAndPassword(email: _email, password: _password).then((_){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
               });
 
             }, child: Text('Log In')),

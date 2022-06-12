@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/main.dart';
 import 'package:user_database/routes/feed_view.dart';
+import 'package:user_database/routes/profile_view.dart';
 import 'package:user_database/routes/sign_up.dart';
 import 'package:user_database/AppColors.dart';
 import 'package:user_database/routes/tags.dart';
@@ -17,7 +18,7 @@ class _MainPageState extends State<MainPage> {
     FeedView(),
     Center(child: Text('Search View is not build yet.', style: TextStyle(fontSize: 72))),
     Tags(),
-    Center(child: Text('Profile View', style: TextStyle(fontSize: 72))),
+    ProfileView(),
   ];
 
   @override

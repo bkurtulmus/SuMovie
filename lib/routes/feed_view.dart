@@ -23,10 +23,10 @@ class FeedView extends StatefulWidget {
 
 class _FeedViewState extends State<FeedView> {
   List<FeedPost> feedposts = [
-    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png', username: 'Username1' , photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41, comments: 6),
-    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username2' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 4', likes: 88, comments: 14),
-    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username3' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 29', likes: 12, comments: 1),
-    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username4' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'March 26', likes: 73, comments: 10),
+    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png', username: 'Username1' , photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41,dislikes: 4, comments: 6),
+    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username2' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 4', likes: 88, dislikes: 5,comments: 14),
+    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username3' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 29', likes: 12,dislikes: 1, comments: 1),
+    FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png' , username: 'Username4' ,photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'April 2', likes: 13, dislikes: 2,comments: 2),
   ];
 
   final usernameController = TextEditingController();
@@ -45,7 +45,7 @@ class _FeedViewState extends State<FeedView> {
   }
 
 
-  final post1 = FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png', username: 'Username1' , photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41, comments: 6);
+  final post1 = FeedPost(userphoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png', username: 'Username1' , photo: 'https://cdn.pixabay.com/photo/2016/03/31/18/36/cinema-1294496__340.png' ,text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41,dislikes: 6, comments: 6);
   late String photoInfo = post1.userphoto;
   int postCount = 0;
 

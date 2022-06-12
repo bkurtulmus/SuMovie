@@ -13,6 +13,7 @@ String tex = 'Content';
 String phot = 'Content Photo';
 String dat = '28.02.2022';
 int like = 5;
+int dislike = 1;
 int comment = 2;
 
 final FeedPost newPost = FeedPost(
@@ -22,6 +23,7 @@ final FeedPost newPost = FeedPost(
   photo: phot,
   date: dat,
   likes: like,
+  dislikes: dislike,
   comments: comment,
 );
 
