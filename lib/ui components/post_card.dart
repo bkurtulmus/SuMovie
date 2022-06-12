@@ -53,19 +53,34 @@ class PostCard extends StatelessWidget {
                 TextButton.icon(
                   onPressed: increament,
                   icon: Icon(
-                    Icons.favorite,
+                    Icons.thumb_up,
                     size: 20.0,
-                    color: PrimaryColor,
-                ),
-                    label: Text(
-                        post.likes.toString(),
-                        style: const TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w300,
-                        )
-                    ),
+                    color: Colors.green,
+                  ),
+                  label: Text(
+                      post.likes.toString(),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      )
+                  ),
                 ),
 
+                TextButton.icon(
+                  onPressed: increament,
+                  icon: Icon(
+                    Icons.thumb_down,
+                    size: 20.0,
+                    color: Colors.red,
+                  ),
+                  label: Text(
+                      post.dislikes.toString(),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      )
+                  ),
+                ),
 
                 const Icon(
                   Icons.comment,
