@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/routes/profile_view.dart';
+import 'package:user_database/AppColors.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final int maxLines;
@@ -199,28 +200,30 @@ class _EditProfileViewState extends State<EditProfileView> {
         child: NavigationBar(
           height: 60,
           selectedIndex: index,
-          onDestinationSelected: (index) =>
+          onDestinationSelected: (index)  =>
               setState(() => this.index = index),
-          destinations: [
+          destinations: const [
             NavigationDestination(
-              icon:Icon(Icons.email_outlined),
-              selectedIcon: Icon(Icons.email),
-              label: 'Mail',
+              icon:Icon(Icons.home_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.home, color: SecondaryColor),
+              label: 'Home',
             ),
             NavigationDestination(
-              icon:Icon(Icons.chat_bubble_outlined),
-              selectedIcon: Icon(Icons.chat_bubble_outlined),
-              label: 'Chat',
+
+              icon:Icon(Icons.search, color: TertiaryColor),
+              selectedIcon: Icon(Icons.search_outlined, color: SecondaryColor),
+              label: 'Search',
+            ),
+
+            NavigationDestination(
+              icon:Icon(Icons.tag_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.tag, color: SecondaryColor),
+              label: 'Tag',
             ),
             NavigationDestination(
-              icon:Icon(Icons.group_outlined),
-              selectedIcon: Icon(Icons.group_outlined),
-              label: 'Spaces',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.videocam_outlined, size: 30),
-              selectedIcon: Icon(Icons.videocam_outlined),
-              label: 'Meet',
+              icon:Icon(Icons.supervised_user_circle, size: 30, color: TertiaryColor),
+              selectedIcon: Icon(Icons.supervised_user_circle_outlined, color: SecondaryColor),
+              label: 'Profile',
             ),
           ],
         ),
