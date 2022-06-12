@@ -19,6 +19,7 @@ class TextFieldWidget extends StatefulWidget {
 class _TextFieldWidgetState extends State<TextFieldWidget> {
   late final TextEditingController controller;
   int index = 0;
+  bool IsPrivate = false;
   final screens = [
     Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
     Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
@@ -64,6 +65,8 @@ class EditProfileView extends StatefulWidget {
 
 class _EditProfileViewState extends State<EditProfileView> {
   int index = 0;
+  bool fav = false;
+
   @override
   Widget build(BuildContext context) {
     print('build');
@@ -141,6 +144,15 @@ class _EditProfileViewState extends State<EditProfileView> {
                 SizedBox(
                   height: 10,
                 ),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: () {
+                    if(fav)
+                      setState(() => fav=false);
+                    else
+                      setState(() => fav=true);
+                  },
+                  child: Text(fav ? 'Make Profile Public' : 'Make Profile Private')),
                 const SizedBox(height: 24),
                 TextFieldWidget(
                   label: 'Username',
