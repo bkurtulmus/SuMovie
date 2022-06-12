@@ -3,6 +3,7 @@ import 'package:user_database/model/post.dart';
 import 'package:user_database/routes/edit_profile_view.dart';
 import 'package:user_database/routes/feed_view.dart';
 import 'package:user_database/ui components/post_card.dart';
+import 'package:user_database/AppColors.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -63,7 +64,8 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        backgroundColor: Colors.purple,
+        title: Text('My Profile'),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(

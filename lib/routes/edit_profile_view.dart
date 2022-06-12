@@ -73,6 +73,7 @@ class _EditProfileViewState extends State<EditProfileView> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.purple,
         title: Text('Edit Profile'),
         centerTitle: true,
         leading: IconButton(
