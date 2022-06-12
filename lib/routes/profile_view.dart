@@ -86,11 +86,6 @@ class _ProfileViewState extends State<ProfileView> {
         ],
       ),
 
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: buttonClicked,
-      ),
-
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -212,41 +207,6 @@ class _ProfileViewState extends State<ProfileView> {
               ],
             ),
           ),
-        ),
-      ),
-      bottomNavigationBar: NavigationBarTheme(
-        data: NavigationBarThemeData(
-          labelTextStyle: MaterialStateProperty.all(
-            TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
-          ),
-        ),
-        child: NavigationBar(
-          height: 60,
-          selectedIndex: index,
-          onDestinationSelected: (index) =>
-              setState(() => this.index = index),
-          destinations: [
-            NavigationDestination(
-              icon:Icon(Icons.email_outlined),
-              selectedIcon: Icon(Icons.email),
-              label: 'Mail',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.chat_bubble_outlined),
-              selectedIcon: Icon(Icons.chat_bubble_outlined),
-              label: 'Chat',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.group_outlined),
-              selectedIcon: Icon(Icons.group_outlined),
-              label: 'Spaces',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.videocam_outlined, size: 30),
-              selectedIcon: Icon(Icons.videocam_outlined),
-              label: 'Meet',
-            ),
-          ],
         ),
       ),
     );
