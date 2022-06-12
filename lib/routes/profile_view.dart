@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:user_database/model/post.dart';
 import 'package:user_database/routes/edit_profile_view.dart';
 import 'package:user_database/routes/feed_view.dart';
+import 'package:user_database/routes/navbar.dart';
 import 'package:user_database/ui components/post_card.dart';
 import 'package:user_database/AppColors.dart';
 import 'package:user_database/routes/createPost.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -14,6 +16,11 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  late User user = auth.currentUser!;
+  late String ppLink = user.photoURL!;
+
   List<Post> posts = [
     Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 17', likes: 41,dislikes: 4, comments: 6),
     Post(text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum auctor accumsan. Suspendisse ac eros sed augue scelerisque venenatis.', date: 'May 4', likes: 88, dislikes: 5, comments: 14),
@@ -22,10 +29,10 @@ class _ProfileViewState extends State<ProfileView> {
   ];
   int index = 0;
   final screens = [
-  Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
-  Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
-  Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
-  Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
+    Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
+    Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
+    Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
+    Center(child: Text('Mail', style: TextStyle(fontSize: 72))),
   ];
   int postCount = 0;
 
@@ -74,7 +81,7 @@ class _ProfileViewState extends State<ProfileView> {
             color: Colors.white,
           ),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
           },
         ),
         actions: <Widget>[
@@ -123,7 +130,7 @@ class _ProfileViewState extends State<ProfileView> {
                         backgroundColor: Colors.grey,
                         child: ClipOval(
                           child: Image.network(
-                            'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png',
+                            ppLink,
                             fit: BoxFit.fitHeight,
                           ),
                         ),

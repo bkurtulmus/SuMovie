@@ -11,7 +11,7 @@ import 'package:user_database/analytics.dart';
 
 class Login extends StatefulWidget {
 
-   @override
+  @override
   _Login createState() => _Login();
 
 }
@@ -33,42 +33,42 @@ class _Login extends State<Login> {
         title: Text('Login'),
       ),
       body:
-        Column(
-          children: [
-            TextField(
+      Column(
+        children: [
+          TextField(
               controller: usernameCheckController,
               decoration: InputDecoration(
-                labelText: 'Username',
-                border: OutlineInputBorder()
+                  labelText: 'Username',
+                  border: OutlineInputBorder()
               ),
-                onChanged: (value){
-                  setState(() {
-                    _email = value.trim();
-                  });
-                }
-            ),
-            TextField(
+              onChanged: (value){
+                setState(() {
+                  _email = value.trim();
+                });
+              }
+          ),
+          TextField(
               controller: passwordCheckController,
               decoration: InputDecoration(
                   labelText: 'Password',
                   border: OutlineInputBorder()
               ),
-                onChanged: (value){
-                  setState(() {
-                    _password = value.trim();
-                  });
-                }
-            ),
-            SizedBox(height: 30),
-            ElevatedButton(onPressed: () async{
-              await AppAnalytics.setScreenName('Feed');
-              auth.signInWithEmailAndPassword(email: _email, password: _password).then((_){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
-              });
+              onChanged: (value){
+                setState(() {
+                  _password = value.trim();
+                });
+              }
+          ),
+          SizedBox(height: 30),
+          ElevatedButton(onPressed: () async{
+            await AppAnalytics.setScreenName('Feed');
+            auth.signInWithEmailAndPassword(email: _email, password: _password).then((_){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
+            });
 
-            }, child: Text('Log In')),
-          ],
-        ),
+          }, child: Text('Log In')),
+        ],
+      ),
     );
   }
   Future login() async{

@@ -75,30 +75,32 @@ class _SignUp extends State<SignUp> {
               children: [
                 SizedBox(height: 50),
                 Container(
+
                   color: Colors.white,
                   child: TextField(
-                    controller: usernameController,
-                    decoration: InputDecoration(
-                      labelText: 'Username',
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(),
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    )
+                      controller: usernameController,
+                      decoration: InputDecoration(
+                        labelText: 'Username',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(),
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+
+                      )
                   ),
                 ),
                 SizedBox(height: 20),
                 Container(
                   color: Colors.white,
                   child: TextField(
-                    controller: emailController,
-                    decoration: InputDecoration(
+                      controller: emailController,
+                      decoration: InputDecoration(
 
-                      labelText: 'E-mail',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25)
+                        labelText: 'E-mail',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(25)
+                        ),
                       ),
-                    ),
                       onChanged: (value){
                         setState(() {
                           _email = value.trim();
@@ -142,32 +144,34 @@ class _SignUp extends State<SignUp> {
                 ),
                 SizedBox(height: 30),
                 GestureDetector(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color:PrimaryColor,
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    width: 200,
-                    height: 50,
-                    child: Center(child: Text('Confirm', style: TextStyle(fontSize: 20,color: Colors.white))),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color:PrimaryColor,
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                      width: 200,
+                      height: 50,
+                      child: Center(child: Text('Confirm', style: TextStyle(fontSize: 20,color: Colors.white))),
 
-                  ),
-                  onTap: () {
-                    Random random = new Random();
-                    int randomNumber = random.nextInt(100) + 100;
-                    users.child(usernameController.text.toString()).set({
-                      'username': usernameController.text.toString(),
-                      'password': passwordController.text.toString(),
-                      'num': randomNumber,
-                      'link': 'https://picsum.photos/${randomNumber}',
-                    });
-                    {
-                      AppAnalytics.setScreenName('Feed');
-                      auth.createUserWithEmailAndPassword(email: _email, password: _password).then((_){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+                    ),
+                    onTap: () {
+                      Random random = new Random();
+                      int randomNumber = random.nextInt(100) + 100;
+                      users.child(usernameController.text.toString()).set({
+                        'username': usernameController.text.toString(),
+                        'password': passwordController.text.toString(),
+                        'num': randomNumber,
+                        'link': 'https://picsum.photos/${randomNumber}',
                       });
+                      {
+                        AppAnalytics.setScreenName('Feed');
+                        auth.createUserWithEmailAndPassword(email: _email, password: _password,).then((user){
+                          user.user!.updateDisplayName(usernameController.text);
+                          user.user!.updatePhotoURL('https://picsum.photos/${randomNumber}/?grayscale');
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => mainPage()));
+                        });
+                      }
                     }
-                  }
                 ),
               ],
             ),
