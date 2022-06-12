@@ -8,6 +8,10 @@ import 'package:user_database/routes/feed.dart';
 import 'package:user_database/routes/navbar.dart';
 import 'package:user_database/routes/tags.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:intl/intl.dart';
+import 'package:user_database/routes/login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 
 
@@ -35,7 +39,7 @@ class _createPostState extends State<createPost> {
     imageLinkController.addListener(() => setState(() {}));
 
 
-    () async{
+        () async{
       await AppAnalytics.setScreenName('Create Post Page');
     };
 
@@ -94,12 +98,23 @@ class _createPostState extends State<createPost> {
                   ),
                   onTap: ()  {
 
-                    database.child('posts').child(textController.text.toString()).set({
-                      'username' : 'Username_1',
+                    DateTime now = DateTime.now();
+                    final FirebaseAuth auth = FirebaseAuth.instance;
+                    final User user = auth.currentUser!;
+                    print('HEEEEEEY');
+                    print(user);
+                    print(now.toString());
+                    final int ms = now.microsecondsSinceEpoch;
+                    database.child('allPosts').child(user.displayName!).child(ms.toString()).set({
+                      'username' : user.displayName,
                       'text': textController.text.toString(),
                       'imageLink': imageLinkController.text.toString(),
+                      'date' : now.toString(),
+                      'commentsList' : [],
+                      'comments' : 0,
+                      'likes' : 0,
                     });
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => Tags()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage()));
                   },
                 ),
 
@@ -111,6 +126,4 @@ class _createPostState extends State<createPost> {
         ));
   }
 }
-
-
 
