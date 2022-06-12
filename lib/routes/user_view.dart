@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/model/post.dart';
 import 'package:user_database/ui components/post_card.dart';
+import 'package:user_database/AppColors.dart';
+import 'package:user_database/routes/feed_view.dart';
 
 class UserView extends StatefulWidget {
   const UserView({Key? key}) : super(key: key);
@@ -42,48 +44,49 @@ class _UserViewState extends State<UserView> {
       postCount++;
     });
   }
-  void ClickedButton(String value) {
-    switch (value) {
-      case 'Edit Profile':
-        break;
-      case 'Settings':
-        break;
-    }
-  }
   @override
   Widget build(BuildContext context) {
     print('build');
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
-        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: Container(
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                  width: 40,
+                  height: 40,
+                  child: Image.asset('lib/assets/app_icon_final-01.png')),
+
+              Text('Su',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                ),),
+              Text('Movie',
+                style: TextStyle(
+                  fontSize: 20,
+                  color: PrimaryColor,
+                ),)
+
+            ],
+
+          ),
+        ),
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+          },
         ),
-        actions: <Widget>[
-          PopupMenuButton<String>(
-            onSelected: ClickedButton,
-            itemBuilder: (BuildContext context) {
-              return {'Edit Profile', 'Settings'}.map((String choice) {
-                return PopupMenuItem<String>(
-                  value: choice,
-                  child: Text(choice),
-                );
-              }).toList();
-            },
-          ),
-        ],
       ),
 
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: buttonClicked,
-      ),
 
       body: SingleChildScrollView(
         child: SafeArea(
@@ -217,28 +220,30 @@ class _UserViewState extends State<UserView> {
         child: NavigationBar(
           height: 60,
           selectedIndex: index,
-          onDestinationSelected: (index) =>
+          onDestinationSelected: (index)  =>
               setState(() => this.index = index),
-          destinations: [
+          destinations: const [
             NavigationDestination(
-              icon:Icon(Icons.email_outlined),
-              selectedIcon: Icon(Icons.email),
-              label: 'Mail',
+              icon:Icon(Icons.home_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.home, color: SecondaryColor),
+              label: 'Home',
             ),
             NavigationDestination(
-              icon:Icon(Icons.chat_bubble_outlined),
-              selectedIcon: Icon(Icons.chat_bubble_outlined),
-              label: 'Chat',
+
+              icon:Icon(Icons.search, color: TertiaryColor),
+              selectedIcon: Icon(Icons.search_outlined, color: SecondaryColor),
+              label: 'Search',
+            ),
+
+            NavigationDestination(
+              icon:Icon(Icons.tag_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.tag, color: SecondaryColor),
+              label: 'Tag',
             ),
             NavigationDestination(
-              icon:Icon(Icons.group_outlined),
-              selectedIcon: Icon(Icons.group_outlined),
-              label: 'Spaces',
-            ),
-            NavigationDestination(
-              icon:Icon(Icons.videocam_outlined, size: 30),
-              selectedIcon: Icon(Icons.videocam_outlined),
-              label: 'Meet',
+              icon:Icon(Icons.supervised_user_circle, size: 30, color: TertiaryColor),
+              selectedIcon: Icon(Icons.supervised_user_circle_outlined, color: SecondaryColor),
+              label: 'Profile',
             ),
           ],
         ),

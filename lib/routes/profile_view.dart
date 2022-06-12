@@ -4,6 +4,7 @@ import 'package:user_database/routes/edit_profile_view.dart';
 import 'package:user_database/routes/feed_view.dart';
 import 'package:user_database/ui components/post_card.dart';
 import 'package:user_database/AppColors.dart';
+import 'package:user_database/routes/createPost.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
@@ -90,7 +91,22 @@ class _ProfileViewState extends State<ProfileView> {
           ),
         ],
       ),
-
+      floatingActionButton: FloatingActionButton.extended(
+          heroTag: 'uniqueTag',
+          label: Row(
+            children: [
+              Icon(Icons.lens_blur), Text('New Post')
+            ],
+          ),
+          splashColor: TertiaryColor,
+          backgroundColor: PrimaryColor,
+          hoverColor: SecondaryColor,
+          elevation: 15,
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => createPost()));
+          }
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -212,6 +228,43 @@ class _ProfileViewState extends State<ProfileView> {
               ],
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          labelTextStyle: MaterialStateProperty.all(
+            TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
+          ),
+        ),
+        child: NavigationBar(
+          height: 60,
+          selectedIndex: index,
+          onDestinationSelected: (index)  =>
+              setState(() => this.index = index),
+          destinations: const [
+            NavigationDestination(
+              icon:Icon(Icons.home_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.home, color: SecondaryColor),
+              label: 'Home',
+            ),
+            NavigationDestination(
+
+              icon:Icon(Icons.search, color: TertiaryColor),
+              selectedIcon: Icon(Icons.search_outlined, color: SecondaryColor),
+              label: 'Search',
+            ),
+
+            NavigationDestination(
+              icon:Icon(Icons.tag_outlined, color: TertiaryColor),
+              selectedIcon: Icon(Icons.tag, color: SecondaryColor),
+              label: 'Tag',
+            ),
+            NavigationDestination(
+              icon:Icon(Icons.supervised_user_circle, size: 30, color: TertiaryColor),
+              selectedIcon: Icon(Icons.supervised_user_circle_outlined, color: SecondaryColor),
+              label: 'Profile',
+            ),
+          ],
         ),
       ),
     );
