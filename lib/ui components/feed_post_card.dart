@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/model/feed_post.dart';
 import 'package:user_database/AppColors.dart';
+import 'package:user_database/routes/user_view.dart';
 
 
 class FeedPostCard extends StatelessWidget {
@@ -38,11 +39,16 @@ class FeedPostCard extends StatelessWidget {
                 radius: 20,
               ),
               const SizedBox(width: 8),
-              Text(
-                feedpost.username,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
+              new GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserView()));
+                },
+                child: new Text(
+                  feedpost.username,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ]
@@ -129,14 +135,6 @@ class FeedPostCard extends StatelessWidget {
                       fontSize: 20,
                       fontWeight: FontWeight.w300,
                     )
-                ),
-
-                const SizedBox(width: 8),
-
-                IconButton(
-                  iconSize: 20,
-                  onPressed: delete,
-                  icon: const Icon(Icons.share, size: 20, color: Colors.purpleAccent,),
                 ),
               ],
             )
