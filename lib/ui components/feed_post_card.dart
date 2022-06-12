@@ -136,14 +136,6 @@ class FeedPostCard extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     )
                 ),
-
-                const SizedBox(width: 8),
-
-                IconButton(
-                  iconSize: 20,
-                  onPressed: delete,
-                  icon: const Icon(Icons.share, size: 20, color: Colors.purpleAccent,),
-                ),
               ],
             )
           ],
