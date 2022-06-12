@@ -64,7 +64,7 @@ class FeedPostCard extends StatelessWidget {
             ),
 
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   feedpost.date,
@@ -75,14 +75,14 @@ class FeedPostCard extends StatelessWidget {
                   )
                 ),
 
-                const Spacer(),
+                const SizedBox(width: 24),
 
                 TextButton.icon(
                     onPressed: increament,
                     icon: Icon(
-                  Icons.favorite,
+                  Icons.thumb_up,
                   size: 20.0,
-                  color: Colors.red,
+                  color: Colors.green,
                 ),
                     label: Text(
                         feedpost.likes.toString(),
@@ -97,7 +97,26 @@ class FeedPostCard extends StatelessWidget {
 
 
                 const SizedBox(width: 8),
+                TextButton.icon(
+                  onPressed: increament,
+                  icon: Icon(
+                    Icons.thumb_down,
+                    size: 20.0,
+                    color: Colors.red,
+                  ),
+                  label: Text(
+                      feedpost.dislikes.toString(),
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300,
+                      )
+                  ),
+                ),
 
+
+
+
+                const SizedBox(width: 8),
                 const Icon(
                   Icons.comment,
                   size: 20.0,
