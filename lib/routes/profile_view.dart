@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:week_5/model/post.dart';
-import 'package:week_5/ui/post_card.dart';
+import 'package:user_database/model/post.dart';
+import 'package:user_database/ui components/post_card.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({Key? key}) : super(key: key);
