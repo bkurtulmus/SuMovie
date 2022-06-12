@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:user_database/routes/profile_view.dart';
 
 class TextFieldWidget extends StatefulWidget {
   final int maxLines;
@@ -77,7 +77,9 @@ class _EditProfileViewState extends State<EditProfileView> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileView()));
+          },
         ),
       ),
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_database/model/post.dart';
 import 'package:user_database/routes/edit_profile_view.dart';
+import 'package:user_database/routes/feed_view.dart';
 import 'package:user_database/ui components/post_card.dart';
 
 class ProfileView extends StatefulWidget {
@@ -69,7 +70,9 @@ class _ProfileViewState extends State<ProfileView> {
             Icons.arrow_back,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => FeedView()));
+          },
         ),
         actions: <Widget>[
           PopupMenuButton<String>(
