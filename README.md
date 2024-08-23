@@ -41,8 +41,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - Thanks to our Mobile Application course instructors and peers for their valuable feedback and support throughout this project.
 
-## Contact
-
-For any questions or further information, please contact us at [your-email@example.com].
-
 Happy exploring!
